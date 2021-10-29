@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'card_component.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,7 +10,10 @@ class HomePage extends StatelessWidget {
         title: Text('Mibos'),
         backgroundColor: Color.alphaBlend(Colors.white, Colors.black),
       ),
-      body: Center(child: Text('card')),
+      body: Container(
+        child: CardComponent(),
+        alignment: Alignment.topCenter,
+      ),
     );
   }
 }

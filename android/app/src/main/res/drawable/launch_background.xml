@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:background="@drawable/zen" />
+            android:background="@drawable/icon" />
     </item>
 </layer-list>

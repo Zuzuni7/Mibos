@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mibos_app/home_screen.dart';
 import 'goal_screen.dart';
-import 'splash_screen.dart';
 
 void main() {
   runApp(MyApp());

@@ -6,7 +6,7 @@ import 'main.dart';
 
 class GoalsScreen extends MyApp {
   static const routeName = '/goals_screen';
-//  final String goalId;
+// final String goalId;
 //  final String goalTitle;
 
 //  GoalsScreen(this.goalId, this.goalTitle);
