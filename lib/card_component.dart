@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mibos_app/goal_screen.dart';
+import 'package:mibos_app/models/data.dart';
+import 'goals_component_screen.dart';
 
 /** 
  * Card Component should consist of 3 goal_progression components
@@ -20,7 +23,8 @@ class _GoalsState extends State<Goals> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Goal 1'),
+      padding: EdgeInsets.all(30),
+      child: Text('Goal #'),
     );
   }
 }
@@ -49,7 +53,7 @@ class _CardState extends State<CardComponent> {
       child: ListView(
           padding: EdgeInsets.only(
               left: 10, top: 25, right: 10, bottom: 10), // space between
-          children: [Goals(), Goals(), Goals()]), // goal progression
+          children: <Widget>[Goals(), Goals(), Goals()]), // goal progression
     );
   }
 }

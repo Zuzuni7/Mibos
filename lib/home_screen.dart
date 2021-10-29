@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
         child: CardComponent(),
         alignment: Alignment.topCenter,
       ),
+      backgroundColor: Colors.tealAccent,
     );
   }
 }
