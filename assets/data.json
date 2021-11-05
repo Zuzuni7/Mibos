@@ -1,0 +1,28 @@
+{
+    "goals": [
+      {
+        "id": "1",
+        "name": "run",
+        "type": "body",
+        "details": "Run x amount of time today",
+        "mType": "min",
+        "mAmt":"30"
+      },
+      {
+        "id": "2",
+        "name": "pray",
+        "type": "spirit",
+        "details": "pray x amount of times today",
+        "mType": "count",
+        "mAmt": "2"
+      },
+      {
+        "id": "3",
+        "name": "read",
+        "type": "mind",
+        "details": "Read x amount of time today",
+        "mType": "min",
+        "mAmt":"15"
+      }
+    ]
+  }
