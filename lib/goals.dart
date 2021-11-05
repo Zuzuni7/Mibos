@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Goal extends StatelessWidget {
@@ -15,7 +15,7 @@ class Goal extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      child: Text(this.name),
+      child: Text(this.details),
     );
   }
 }

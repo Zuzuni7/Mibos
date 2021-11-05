@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'goals.dart';
+//import 'goals.dart';
 import 'goal_screen.dart';
 
 class GoalItem extends StatelessWidget {

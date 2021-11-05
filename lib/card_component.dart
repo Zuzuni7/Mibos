@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mibos_app/goal_screen.dart';
-import 'package:mibos_app/models/data.dart';
-import 'goal_item.dart';
+//import 'package:mibos_app/goal_screen.dart';
+//import 'package:mibos_app/models/data.dart';
+//import 'goal_item.dart';
 import 'goals.dart';
 
 /** 
@@ -25,20 +25,14 @@ class _GoalsState extends State<Goals> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(30),
-      child: ListView(
-        children: <Widget>[
-          Goal(1, 'Run', 'Body', 'Run 2 miles', 'miles', 2),
-          Goal(2, 'Meditate', 'Mind', 'Medidate 20 min', 'min', 20),
-          Goal(3, 'Pray', 'Spirit', 'Pray 2 times', 'count', 2)
-        ],
-        padding: EdgeInsets.only(
-            left: 10, top: 25, right: 10, bottom: 10), // space between
-      ),
+      child: Goal(1, 'Scobity', 'Bop', 'Boppity 2 miles', 'Scoop', 2),
     );
   }
 }
 
-const KeepLive = true;
+// Goal(2, 'Meditate', 'Mind', 'Medidate 20 min', 'min', 20),
+//           Goal(3, 'Pray', 'Spirit', 'Pray 2 times', 'count', 2)
+
 /********************************************************** */
 
 class CardComponent extends StatefulWidget {
@@ -63,7 +57,11 @@ class _CardState extends State<CardComponent> {
       child: ListView(
           padding: EdgeInsets.only(
               left: 10, top: 25, right: 10, bottom: 10), // space between
-          children: <Widget>[Goals(), Goals(), Goals()]), // goal progression
+          children: <Widget>[
+            Goal(1, 'Run', 'Body', 'Run 2 miles', 'miles', 2),
+            Goal(1, 'Meditate', 'Mind', 'Meditate 2 min', 'min', 2),
+            Goal(1, 'Pray', 'Spirit', 'Pray 2 times', 'count', 2)
+          ]), // goal progression
     );
   }
 }
