@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mibos'),
-        backgroundColor: Color.alphaBlend(Colors.white, Colors.black),
+        backgroundColor: Color.alphaBlend(Colors.white, Colors.white),
       ),
       body: Container(
         child: CardComponent(),
