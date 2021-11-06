@@ -7,6 +7,8 @@ class GoalsScreen extends StatelessWidget {
   const GoalsScreen({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
 
+// Future function
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

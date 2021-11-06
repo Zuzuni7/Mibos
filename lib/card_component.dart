@@ -29,6 +29,7 @@ class _CardState extends State<CardComponent> {
     setState(() {});
   }
 
+// Automatically load JSON data
   @override
   void initState() {
     super.initState();
@@ -42,7 +43,7 @@ class _CardState extends State<CardComponent> {
     return Container(
       margin: EdgeInsets.only(top: 25),
       alignment: Alignment.topCenter,
-      height: 275,
+      height: 325,
       width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
