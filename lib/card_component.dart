@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:mibos_app/goal_screen.dart';
-import 'goal.dart';
 
 class CardComponent extends StatefulWidget {
   const CardComponent({Key? key}) : super(key: key);
@@ -69,7 +68,10 @@ class _CardState extends State<CardComponent> {
                       return Card(
                         margin: const EdgeInsets.all(10),
                         child: ListTile(
-                          leading: Text(_items[index]["id"]),
+                          leading: Text(_items[index]["type"]),
+                          trailing: Text(_items[index]["mAmt"] +
+                              " " +
+                              _items[index]["mType"]),
                           title: Text(_items[index]["name"]),
                           subtitle: Text(_items[index]["details"]),
                         ),

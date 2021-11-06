@@ -12,17 +12,46 @@ class GoalsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Edit Goals"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Update JSON
-          },
-          child: Text('Save Goals!'),
+        appBar: AppBar(
+          title: Text("Edit Goals"),
         ),
-      ),
-    );
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white10,
+          alignment: Alignment.topCenter,
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Update Goals'),
+            ),
+          ),
+        ));
+  }
+}
+
+// goal widget input forms
+// Takes in name, details, mType, & mAmt
+
+class GoalsForm extends StatefulWidget {
+  const GoalsForm(String name, String details, String mType, int mAmt,
+      {Key? key})
+      : super(key: key);
+
+  final String name = '';
+  final String details = '';
+  final String mType = '';
+  final int mAmt = 0;
+
+  @override
+  _GoalsFormState createState() => _GoalsFormState();
+}
+
+class _GoalsFormState extends State<GoalsForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'card_component.dart';
+import 'avatar.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,7 +15,13 @@ class HomePage extends StatelessWidget {
         child: CardComponent(),
         alignment: Alignment.topCenter,
       ),
-      backgroundColor: Colors.tealAccent,
+      backgroundColor: Colors.white,
+      //The Avatar GIF needs to be extrapolated
+      bottomNavigationBar: Container(
+          height: 100,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.bottomCenter,
+          child: Avatar()),
     );
   }
 }
