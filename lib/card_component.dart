@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:mibos_app/goal_screen.dart';
 import 'goal.dart';
 
 class CardComponent extends StatefulWidget {
@@ -25,6 +26,15 @@ class _CardState extends State<CardComponent> {
 
   Future<void> EditGoals() async {
     //navigate to Edit goals screen
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      readJson();
+    });
   }
 
   @override
@@ -42,7 +52,12 @@ class _CardState extends State<CardComponent> {
         children: [
           ElevatedButton(
             child: const Text('Edit Goals'),
-            onPressed: EditGoals,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GoalsScreen()),
+              );
+            },
           ),
           // Display the data loaded from sample.json
           _items.isNotEmpty

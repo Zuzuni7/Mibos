@@ -2,15 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 //import 'package:flutter/src/widgets/navigator.dart';
-import 'main.dart';
 
-class GoalsScreen extends MyApp {
+class GoalsScreen extends StatelessWidget {
+  const GoalsScreen({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
 
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context) as Map<String, String>;
-
-    return Text(routeName);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Edit Goals"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Update JSON
+          },
+          child: Text('Save Goals!'),
+        ),
+      ),
+    );
   }
 }
