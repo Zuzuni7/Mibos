@@ -25,7 +25,11 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('The Avatar will return... bleep bloop.'),
+      child: Image.asset(
+        "assets/images/avatar000.gif",
+        height: 500.0,
+        width: 500.0,
+      ),
     );
   }
 }

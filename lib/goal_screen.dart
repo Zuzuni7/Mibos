@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
-//import 'package:flutter/src/widgets/navigator.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 
 class GoalsScreen extends StatelessWidget {
   const GoalsScreen({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
+
+  Future<void> saveData() async {
+    //Update JSON
+  }
 
 // Future function
 
@@ -20,9 +26,10 @@ class GoalsScreen extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           color: Colors.white10,
           alignment: Alignment.topCenter,
-          child: Center(
+          child: Container(
             child: ElevatedButton(
               onPressed: () {
+                saveData(); //UpdateJSON
                 Navigator.pop(context);
               },
               child: Text('Update Goals'),
@@ -31,9 +38,6 @@ class GoalsScreen extends StatelessWidget {
         ));
   }
 }
-
-// goal widget input forms
-// Takes in name, details, mType, & mAmt
 
 class GoalsForm extends StatefulWidget {
   const GoalsForm(String name, String details, String mType, int mAmt,
@@ -50,8 +54,21 @@ class GoalsForm extends StatefulWidget {
 }
 
 class _GoalsFormState extends State<GoalsForm> {
+  List _items = [];
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/data.json');
+    final data = await json.decode(response);
+    setState(() {
+      _items = data["goals"];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      alignment: Alignment.center,
+      child: GoalsForm('Pray', 'Pray 2 times', 'times', 2),
+    );
   }
 }
