@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       //The Avatar GIF needs to be extrapolated
       bottomNavigationBar: Container(
-          height: 100,
+          height: 350,
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomCenter,
           child: Avatar()),

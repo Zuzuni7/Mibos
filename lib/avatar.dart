@@ -24,6 +24,7 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    //Add logic for conditions and avatar display
     return Container(
       child: Image.asset(
         "assets/images/avatar000.gif",
