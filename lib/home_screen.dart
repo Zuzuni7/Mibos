@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         child: CardComponent(),
         alignment: Alignment.topCenter,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       //The Avatar GIF needs to be extrapolated
       bottomNavigationBar: Container(
           height: 350,
