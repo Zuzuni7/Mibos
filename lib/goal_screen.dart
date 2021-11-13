@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -9,11 +11,25 @@ class GoalsScreen extends StatelessWidget {
   const GoalsScreen({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
 
-  Future<void> saveData() async {
+  // This function is supposed to update the JSON
+  Future<void> saveData(String id, String name, String type, String details,
+      String mType, String mAmt) async {
     //Update JSON
-  }
+    final String response = await rootBundle.loadString('assets/data.json');
+    final data = await json.decode(response);
+    File jsonFile = File("data.json");
+    // CANT FIND THIS DIR!!!!!!!!!!!!!!!!!!
+    data["goals"][1]["id"] = "1";
+    data["goals"][1]["name"] = "study";
+    data["goals"][1]["type"] = "mind";
+    data["goals"][1]["details"] = "Study for 10 minute";
+    data["goals"][1]["mType"] = "min";
+    data["goals"][1]["mAmt"] = "10";
 
-// Future function
+    print(data["goals"][1]);
+
+    jsonFile.writeAsStringSync(json.encode(data));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +45,8 @@ class GoalsScreen extends StatelessWidget {
           child: Container(
             child: ElevatedButton(
               onPressed: () {
-                saveData(); //UpdateJSON
+                saveData('1', 'study', 'mind', 'Study Flutter for 10 min',
+                    'min', '10'); //UpdateJSON
                 Navigator.pop(context);
               },
               child: Text('Update Goals'),
