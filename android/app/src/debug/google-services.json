@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "295442977425",
+    "project_id": "mibos-77609",
+    "storage_bucket": "mibos-77609.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295442977425:android:8582487a3602eccf3fe530",
+        "android_client_info": {
+          "package_name": "com.shalom.mibos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295442977425-5hsfk1cc5bahs92f3e7v2o1svb3ls6at.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDquiG8TL3pX0le_1fbZpJixtVsdoNI3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295442977425-5hsfk1cc5bahs92f3e7v2o1svb3ls6at.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "295442977425-rmd5atf08qlsjgpi23te0t6bg3iu0tkm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shalom.mibos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

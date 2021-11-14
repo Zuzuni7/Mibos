@@ -47,7 +47,7 @@ class GoalsScreen extends StatelessWidget {
               onPressed: () {
                 saveData('1', 'study', 'mind', 'Study Flutter for 10 min',
                     'min', '10'); //UpdateJSON
-                Navigator.pop(context);
+                //Navigator.pop(context);
               },
               child: Text('Update Goals'),
             ),
