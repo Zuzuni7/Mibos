@@ -46,7 +46,7 @@ class _CardState extends State<CardComponent> {
       width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: Colors.black),
       ),
       child: Column(
         children: [
@@ -64,7 +64,8 @@ class _CardState extends State<CardComponent> {
               ? Expanded(
                   child: ListView.builder(
                     itemCount: _items.length,
-                    itemBuilder: (context, index) { // what is item builder???
+                    itemBuilder: (context, index) {
+                      // what is item builder???
                       return Card(
                         margin: const EdgeInsets.all(10),
                         child: ListTile(

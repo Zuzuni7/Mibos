@@ -27,7 +27,7 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
     //Add logic for conditions and avatar display
     return Container(
       child: Image.asset(
-        "assets/images/avatar000.gif",
+        "assets/images/icon.png",
         height: 500.0,
         width: 500.0,
       ),
