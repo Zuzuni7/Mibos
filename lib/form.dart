@@ -38,6 +38,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
 /// This is the stateful widget that the main application instantiates.
 class DropDownMenu extends StatefulWidget {
   const DropDownMenu({Key? key}) : super(key: key);
+  static String value = '';
+
 
   @override
   State<DropDownMenu> createState() => _DropDownMenu();

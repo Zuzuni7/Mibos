@@ -19,7 +19,8 @@ class GoalsScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height - 100,
         color: Colors.white10,
         alignment: Alignment.topCenter,
-        child: ListView(children: [DropDownMenu(),DropDownMenu(),DropDownMenu()]),
+        child: ListView(
+            children: [DropDownMenu(), DropDownMenu(), DropDownMenu()]),
       ),
       bottomNavigationBar: Container(
         child: ElevatedButton(
@@ -28,7 +29,7 @@ class GoalsScreen extends StatelessWidget {
             //     'min', '10'); //UpdateJSON
             Navigator.pop(context);
           },
-          child: Text('Scoobity bop!'),
+          child: Text('Submit Changes'),
         ),
       ),
     );
