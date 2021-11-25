@@ -53,6 +53,45 @@ class _CardState extends State<BodyCard> {
   }
 }
 
+class BodyProgress extends StatefulWidget {
+  @override
+  _BodyProgress createState() => _BodyProgress();
+}
+
+class _BodyProgress extends State<BodyProgress> {
+  bool loading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward_ios_rounded),
+        onPressed: () {
+          setState(() {
+            loading = !loading;
+          });
+        },
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 38),
+        child: Center(
+          child: loading
+              ? LinearProgressIndicator(
+                  backgroundColor: Colors.red,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                )
+              : Text(
+                  "No task to do",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+        ),
+      ),
+    );
+  }
+}
 
 
 
