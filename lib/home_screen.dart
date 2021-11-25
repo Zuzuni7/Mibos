@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mibos_app/button.dart';
 import 'package:mibos_app/mindCard.dart';
 import 'package:mibos_app/spiritCard.dart';
 import 'bodyCard.dart';
 import 'avatar.dart';
+import 'button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,10 +21,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 10,
       ),
-      body: ListView(children: [
+      body: ListView(shrinkWrap: true, children: [
         BodyCard(),
         SpiritCard(),
-        MindCard()
+        MindCard(),
+        ButtonNav()
       ] // This child widget is breaking the everything and idky
           ),
       backgroundColor: Colors.tealAccent,
