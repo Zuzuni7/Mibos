@@ -52,16 +52,3 @@ class _CardState extends State<MindCard> {
     );
   }
 }
-
-
-
-
-// ElevatedButton(
-//             child: const Text('Edit Goals'),
-//             onPressed: () {
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(builder: (context) => GoalsScreen()),
-//               );
-//             },
-//           ),
