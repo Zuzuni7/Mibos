@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'card_component.dart';
+import 'package:mibos_app/spiritCard.dart';
+import 'bodyCard.dart';
 import 'avatar.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,17 +12,18 @@ class HomePage extends StatelessWidget {
         title: Text('Mibos'),
         backgroundColor: Color.alphaBlend(Colors.white, Colors.white),
       ),
-      body: Container(
-        child: CardComponent(),
-        alignment: Alignment.topCenter,
-      ),
+      body: ListView(children: [
+        BodyCard(),
+        SpiritCard()
+      ] // This child widget is breaking the everything and idky
+          ),
       backgroundColor: Colors.white,
       //The Avatar GIF needs to be extrapolated
       bottomNavigationBar: Container(
           height: 350,
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomCenter,
-          child: Avatar()),
+          child: Text('Avatar()')),
     );
   }
 }
