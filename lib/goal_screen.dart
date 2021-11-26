@@ -11,6 +11,7 @@ class GoalsScreen extends StatelessWidget {
   static const routeName = '/goals_screen';
 
   //Would the controllers go here? no bc here is a stateless widget.
+  void updateDB() {}
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,8 @@ class GoalsScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         child: ElevatedButton(
           onPressed: () {
+            // call function that updates Firebase.
+            // Do I need to refresh the instance?
             Navigator.pop(context);
           },
           child: Text('Submit Changes'),
@@ -40,6 +43,7 @@ class GoalsScreen extends StatelessWidget {
   }
 }
 
+// This class is supposed to be for formatting the form entry but I might delete it later...
 class EditGoalsHeader extends StatelessWidget {
   const EditGoalsHeader({Key? key}) : super(key: key);
 
