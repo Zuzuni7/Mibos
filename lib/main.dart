@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home Screen',
-      theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Genos'),
       home: HomePage(),
       initialRoute: ',',
       routes: {

@@ -15,7 +15,10 @@ class ButtonNav extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => GoalsScreen()));
             },
-            child: const Text('Edit Goals'))
+            child: const Text(
+              'Edit Goals',
+              style: TextStyle(fontSize: 30),
+            ))
       ],
     );
   }

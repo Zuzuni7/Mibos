@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'MindGoal.dart';
 import 'BodyGoal.dart';
 import 'SpiritGoal.dart';
 
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+
 class GoalsScreen extends StatelessWidget {
-  const GoalsScreen({Key? key}) : super(key: key);
+  //const GoalsScreen({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
+
+  // Not sure what this is for yet.
+  final Stream<QuerySnapshot> _usersStream =
+      FirebaseFirestore.instance.collection('goals').snapshots();
 
   //Would the controllers go here? no bc here is a stateless widget.
   void updateDB() {}
@@ -34,9 +41,16 @@ class GoalsScreen extends StatelessWidget {
           onPressed: () {
             // call function that updates Firebase.
             // Do I need to refresh the instance?
+
+            var collection =
+                FirebaseFirestore.instance.collection('collection');
+            collection
+                .doc(
+                    'dh2U5PjPbWGjKMkPaMqw') // <-- Doc ID where data should be updated.
+                .update({'name': 'foo'});
             Navigator.pop(context);
           },
-          child: Text('Submit Changes'),
+          child: Text('Submit Changes', style: TextStyle(fontSize: 30)),
         ),
       ),
     );

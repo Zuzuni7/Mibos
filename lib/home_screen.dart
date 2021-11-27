@@ -12,7 +12,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MiBoS'),
+        title: const Text('MiBoS',
+            style: TextStyle(
+                color: Colors.black, fontSize: 50, fontFamily: 'Genos')),
+        textTheme: TextTheme(
+            headline6: TextStyle(color: Colors.black, fontFamily: 'Genos')),
         leading: Image.asset('assets/images/icon.png'),
         centerTitle: true,
         toolbarHeight: 100, // default is 56
@@ -21,14 +25,18 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 10,
       ),
-      body: ListView(shrinkWrap: true, children: [
-        BodyCard(),
-        SpiritCard(),
-        MindCard(),
-        ButtonNav()
-      ] // This child widget is breaking the everything and idky
-          ),
-      backgroundColor: Colors.tealAccent,
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          BodyCard(),
+          SpiritCard(),
+          MindCard(),
+          ButtonNav()
+        ], // This child widget is breaking the everything and idky
+        padding: EdgeInsets.all(20),
+      ),
+      backgroundColor: Colors.white,
+
       //The Avatar GIF needs to be extrapolated
       bottomNavigationBar: Container(
           height: 350,

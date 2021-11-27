@@ -3,13 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-// Stream collectionStream =
-//     FirebaseFirestore.instance.collection('goals').snapshots();
-// Stream documentStream = FirebaseFirestore.instance
-//     .collection('goals')
-//     .doc('dh2U5PjPbWGjKMkPaMqw')
-//     .snapshots();
-
 class BodyCard extends StatefulWidget {
   const BodyCard({Key? key}) : super(key: key);
 

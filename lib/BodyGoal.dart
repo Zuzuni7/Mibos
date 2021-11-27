@@ -20,6 +20,8 @@ class _BodyGoal extends State<BodyGoal> {
   String mAmt = '';
   String mType = '';
 
+  String get BGname => name;
+
   void update() {
     setState(() {
       name = BnameController.text;
@@ -27,6 +29,12 @@ class _BodyGoal extends State<BodyGoal> {
       mType = BmTypeController.text;
       mAmt = BmAmtController.text;
       type = BtypeController.text;
+
+      print(name);
+      print(desc);
+      print(mType);
+      print(mAmt);
+      print(type);
     });
   }
 
