@@ -3,22 +3,44 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'MindGoal.dart';
-import 'BodyGoal.dart';
-import 'SpiritGoal.dart';
-
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-class GoalsScreen extends StatelessWidget {
-  //const GoalsScreen({Key? key}) : super(key: key);
+class GoalsScreen extends StatefulWidget {
+  //const UserInput({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
+  @override
+  _GoalsScreen createState() => _GoalsScreen();
+}
+
+class _GoalsScreen extends State<GoalsScreen> {
+  final MnameController = TextEditingController();
+  final MdescController = TextEditingController();
+  final MmTypeController = TextEditingController();
+  final MmAmtController = TextEditingController();
+  final MtypeController = TextEditingController();
+
+  String name = '';
+  String desc = '';
+  String type = '';
+  String mAmt = '';
+  String mType = '';
 
   // Not sure what this is for yet.
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection('goals').snapshots();
 
   //Would the controllers go here? no bc here is a stateless widget.
-  void updateDB() {}
+  void updateDB() {
+    setState(() {
+      name = MnameController.text;
+      // desc = MdescController.text;
+      // mType = MmTypeController.text;
+      // mAmt = MmAmtController.text;
+      // type = MtypeController.text;
+
+      print(name);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +53,40 @@ class GoalsScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height - 100,
         color: Colors.white10,
         alignment: Alignment.topCenter,
-        child: ListView(
-            padding: EdgeInsets.all(30),
-            shrinkWrap: true,
-            children: [MindGoal(), BodyGoal(), SpiritGoal()]),
+        child:
+            ListView(padding: EdgeInsets.all(30), shrinkWrap: true, children: [
+          Container(
+            child: TextField(
+                controller: MnameController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(hintText: 'Mind Goal')),
+          ),
+          Container(
+            child: TextField(
+                //controller: BnameController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(hintText: 'Body Goal')),
+          ),
+          Container(
+            child: TextField(
+                //controller: SnameController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(hintText: 'Spirit Goal')),
+          )
+        ]),
       ),
       bottomNavigationBar: Container(
         child: ElevatedButton(
           onPressed: () {
             // call function that updates Firebase.
             // Do I need to refresh the instance?
-
-            var collection =
-                FirebaseFirestore.instance.collection('collection');
+            updateDB();
+            var collection = FirebaseFirestore.instance.collection('goals');
             collection
                 .doc(
                     'dh2U5PjPbWGjKMkPaMqw') // <-- Doc ID where data should be updated.
-                .update({'name': 'foo'});
+                .update({'name': name});
+            print("Collection: " + collection.id);
             Navigator.pop(context);
           },
           child: Text('Submit Changes', style: TextStyle(fontSize: 30)),

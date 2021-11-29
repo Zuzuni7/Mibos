@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Avatar extends StatefulWidget {
-  const Avatar({Key? key}) : super(key: key);
+  final String condition;
+
+  Avatar(this.condition);
 
   @override
-  _AvatarState createState() => _AvatarState();
+  _AvatarState createState() => _AvatarState(condition);
 }
 
 class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+
+  final String condition; // String recieved from default constructor
+
+  _AvatarState(this.condition);
 
   @override
   void initState() {
@@ -27,9 +33,9 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
     //Add logic for conditions and avatar display
     return Container(
       child: Image.asset(
-        "assets/images/BMO.gif",
-        height: 500.0,
-        width: 500.0,
+        condition,
+        height: 350.0,
+        width: 350.0,
       ),
     );
   }
