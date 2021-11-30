@@ -19,26 +19,62 @@ class _GoalsScreen extends State<GoalsScreen> {
   final MmAmtController = TextEditingController();
   final MtypeController = TextEditingController();
 
-  String name = '';
-  String desc = '';
-  String type = '';
-  String mAmt = '';
-  String mType = '';
+  final BnameController = TextEditingController();
+  final BdescController = TextEditingController();
+  final BmTypeController = TextEditingController();
+  final BmAmtController = TextEditingController();
+  final BtypeController = TextEditingController();
 
-  // Not sure what this is for yet.
-  final Stream<QuerySnapshot> _usersStream =
-      FirebaseFirestore.instance.collection('goals').snapshots();
+  final SnameController = TextEditingController();
+  final SdescController = TextEditingController();
+  final SmTypeController = TextEditingController();
+  final SmAmtController = TextEditingController();
+  final StypeController = TextEditingController();
+
+  String Mname = '';
+  String Mdesc = '';
+  String Mtype = '';
+  String MmAmt = '';
+  String MmType = '';
+
+  String Bname = '';
+  String Bdesc = '';
+  String Btype = '';
+  String BmAmt = '';
+  String BmType = '';
+
+  String Sname = '';
+  String Sdesc = '';
+  String Stype = '';
+  String SmAmt = '';
+  String SmType = '';
+
+  // // Not sure what this is for yet.
+  // final Stream<QuerySnapshot> _usersStream =
+  //     FirebaseFirestore.instance.collection('goals').snapshots();
 
   //Would the controllers go here? no bc here is a stateless widget.
   void updateDB() {
     setState(() {
-      name = MnameController.text;
-      // desc = MdescController.text;
-      // mType = MmTypeController.text;
-      // mAmt = MmAmtController.text;
-      // type = MtypeController.text;
+      Mname = MnameController.text;
+      Mdesc = MdescController.text;
+      MmType = MmTypeController.text;
+      MmAmt = MmAmtController.text;
+      Mtype = MtypeController.text;
 
-      print(name);
+      Bname = MnameController.text;
+      Bdesc = MdescController.text;
+      BmType = MmTypeController.text;
+      BmAmt = MmAmtController.text;
+      Btype = MtypeController.text;
+
+      Sname = MnameController.text;
+      Sdesc = MdescController.text;
+      SmType = MmTypeController.text;
+      SmAmt = MmAmtController.text;
+      Stype = MtypeController.text;
+
+      print(Mname);
     });
   }
 
@@ -59,11 +95,12 @@ class _GoalsScreen extends State<GoalsScreen> {
             child: TextField(
                 controller: MnameController,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(hintText: 'Mind Goal')),
+                decoration: InputDecoration(hintText: 'Mental Goal')),
           ),
+          Container(child: Text('words')),
           Container(
             child: TextField(
-                //controller: BnameController,
+                controller: BnameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Body Goal')),
           ),
@@ -71,7 +108,7 @@ class _GoalsScreen extends State<GoalsScreen> {
             child: TextField(
                 //controller: SnameController,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(hintText: 'Spirit Goal')),
+                decoration: InputDecoration(hintText: 'Spiritual Goal')),
           )
         ]),
       ),
@@ -85,7 +122,7 @@ class _GoalsScreen extends State<GoalsScreen> {
             collection
                 .doc(
                     'dh2U5PjPbWGjKMkPaMqw') // <-- Doc ID where data should be updated.
-                .update({'name': name});
+                .update({'name': Mname});
             print("Collection: " + collection.id);
             Navigator.pop(context);
           },
