@@ -8,6 +8,7 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 class GoalsScreen extends StatefulWidget {
   //const UserInput({Key? key}) : super(key: key);
   static const routeName = '/goals_screen';
+
   @override
   _GoalsScreen createState() => _GoalsScreen();
 }
@@ -33,25 +34,29 @@ class _GoalsScreen extends State<GoalsScreen> {
 
   String Mname = '';
   String Mdesc = '';
-  String Mtype = '';
+  static const String Mtype = 'mind';
   String MmAmt = '';
   String MmType = '';
 
   String Bname = '';
   String Bdesc = '';
-  String Btype = '';
+  static const String Btype = 'body';
   String BmAmt = '';
   String BmType = '';
 
   String Sname = '';
   String Sdesc = '';
-  String Stype = '';
+  static const String Stype = 'spirit';
   String SmAmt = '';
   String SmType = '';
 
   // // Not sure what this is for yet.
   // final Stream<QuerySnapshot> _usersStream =
   //     FirebaseFirestore.instance.collection('goals').snapshots();
+  void parseDesc(String description) {
+    print('parse through desc for name var');
+    Mname = 'I am parsed now. woohoo.';
+  }
 
   //Would the controllers go here? no bc here is a stateless widget.
   void updateDB() {
@@ -60,21 +65,20 @@ class _GoalsScreen extends State<GoalsScreen> {
       Mdesc = MdescController.text;
       MmType = MmTypeController.text;
       MmAmt = MmAmtController.text;
-      Mtype = MtypeController.text;
 
       Bname = MnameController.text;
       Bdesc = MdescController.text;
       BmType = MmTypeController.text;
       BmAmt = MmAmtController.text;
-      Btype = MtypeController.text;
 
       Sname = MnameController.text;
       Sdesc = MdescController.text;
       SmType = MmTypeController.text;
       SmAmt = MmAmtController.text;
-      Stype = MtypeController.text;
 
-      print(Mname);
+      print('Debugging: ' + MmAmt + ' ' + MmType);
+      print('Debugging: ' + BmAmt + ' ' + BmType);
+      print('Debugging: ' + SmAmt + ' ' + SmType);
     });
   }
 
@@ -97,7 +101,9 @@ class _GoalsScreen extends State<GoalsScreen> {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Mental Goal')),
           ),
-          Container(child: Text('words')),
+          Container(
+              child:
+                  Text('Hint: use a short phrase like "Meditate for 5 min"')),
           Container(
             child: TextField(
                 controller: BnameController,
@@ -105,18 +111,53 @@ class _GoalsScreen extends State<GoalsScreen> {
                 decoration: InputDecoration(hintText: 'Body Goal')),
           ),
           Container(
+              child: Text('Hint: use a short phrase like "Run for 10 min"')),
+          Container(
             child: TextField(
-                //controller: SnameController,
+                controller: SnameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Spiritual Goal')),
-          )
+          ),
+          Container(
+              child: Text('Hint: use a short phrase like "Pray 2 times"')),
+          //add more here.................................................................
+          Container(
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+              child: TextField(
+                controller: MmAmtController,
+                keyboardType: TextInputType.text,
+                decoration:
+                    InputDecoration(hintText: 'Distance/Time/Count (Mind)'),
+              )),
+          Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+              child: TextField(
+                controller: BmAmtController,
+                keyboardType: TextInputType.text,
+                decoration:
+                    InputDecoration(hintText: 'Distance/Time/Count (Body)'),
+              )),
+          Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+              child: TextField(
+                controller: SmAmtController,
+                keyboardType: TextInputType.text,
+                decoration:
+                    InputDecoration(hintText: 'Distance/Time/Count (Spirit)'),
+              )),
+          // Measure Amounts
+          Container(),
+          Container(),
+          Container(),
         ]),
       ),
       bottomNavigationBar: Container(
         child: ElevatedButton(
           onPressed: () {
-            // call function that updates Firebase.
-            // Do I need to refresh the instance?
             updateDB();
             var collection = FirebaseFirestore.instance.collection('goals');
             collection
