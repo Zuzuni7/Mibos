@@ -34,8 +34,8 @@ class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
     return Container(
       child: Image.asset(
         condition,
-        height: 250.0,
-        width: 250.0,
+        height: 225.0,
+        width: 225.0,
       ),
     );
   }

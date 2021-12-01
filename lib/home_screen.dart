@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
               child: Image.asset('assets/images/icon.png')),
           centerTitle: true,
-          toolbarHeight: 100, // default is 56
+          toolbarHeight: 150, // default is 56
           toolbarOpacity: 0.5,
           shadowColor: Colors.blue,
           backgroundColor: Colors.white,
@@ -48,16 +48,16 @@ class HomePage extends StatelessWidget {
 
         //The Avatar GIF needs to be extrapolated
         bottomNavigationBar: Container(
-            height: 250,
+            height: 225,
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.bottomCenter,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                // if (true == true) //apply global var logic from prgress bar
-                //   Avatar('assets/images/BMO.gif')
-                // else
-                //   (Avatar('assets/images/avatar110.gif')),
+                if (true == true) //apply global var logic from prgress bar
+                  Avatar('assets/images/BMO.gif')
+                else
+                  (Avatar('assets/images/avatar110.gif')),
               ],
             )));
   }

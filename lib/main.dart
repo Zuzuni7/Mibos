@@ -5,6 +5,8 @@ import 'goal_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'updateGoals.dart';
 
+double percent = 0.80;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

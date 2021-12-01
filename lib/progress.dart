@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mibos_app/main.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class ReportProgress extends StatefulWidget {
   const ReportProgress({Key? key}) : super(key: key);
@@ -33,13 +35,12 @@ class _ReportProgressState extends State<ReportProgress>
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: <Widget>[
-          const Text(
-            'Current Progress:',
+          Text(
+            'Current Progress: $percent',
             style: TextStyle(fontSize: 20),
           ),
-          LinearProgressIndicator(
-            value: controller.value,
-            semanticsLabel: 'Linear Progress Indicator',
+          LinearPercentIndicator(
+            percent: percent,
           )
         ],
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

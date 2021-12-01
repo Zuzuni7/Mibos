@@ -21,8 +21,22 @@ class _UpdateGoalsState extends State<UpdateGoals> {
           children: [
             Container(
               child: TextField(
-                keyboardType: TextInputType.text,
-              ),
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      hintText: 'Update on what has been done so far. (Mind)')),
+            ),
+            Container(
+              child: TextField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      hintText: 'Update on what has been done so far. (Body)')),
+            ),
+            Container(
+              child: TextField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      hintText:
+                          'Update on what has been done so far. (Spirit)')),
             ),
           ],
         ),
