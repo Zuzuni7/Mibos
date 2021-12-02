@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'main.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
+final fb =
+    FirebaseFirestore.instance.collection('goals').doc(docID).snapshots();
 
 class GoalsScreen extends StatefulWidget {
   //const UserInput({Key? key}) : super(key: key);
@@ -32,30 +35,29 @@ class _GoalsScreen extends State<GoalsScreen> {
   final SmAmtController = TextEditingController();
   final StypeController = TextEditingController();
 
-  String Mname = '';
-  String Mdesc = '';
+  String Mname = 'No data';
+  String Mdesc = 'No data';
   static const String Mtype = 'mind';
-  String MmAmt = '';
-  String MmType = '';
+  String MmAmt = 'No data';
+  String MmType = 'No data';
 
-  String Bname = '';
-  String Bdesc = '';
+  String Bname = 'No data';
+  String Bdesc = 'No data';
   static const String Btype = 'body';
-  String BmAmt = '';
-  String BmType = '';
+  String BmAmt = 'No data';
+  String BmType = 'No data';
 
-  String Sname = '';
-  String Sdesc = '';
+  String Sname = 'No data';
+  String Sdesc = 'No data';
   static const String Stype = 'spirit';
-  String SmAmt = '';
-  String SmType = '';
+  String SmAmt = 'No data';
+  String SmType = 'No data';
 
   // // Not sure what this is for yet.
   // final Stream<QuerySnapshot> _usersStream =
   //     FirebaseFirestore.instance.collection('goals').snapshots();
   void parseDesc(String description) {
-    print('parse through desc for name var');
-    Mname = 'I am parsed now. woohoo.';
+    
   }
 
   //Would the controllers go here? no bc here is a stateless widget.
@@ -76,9 +78,11 @@ class _GoalsScreen extends State<GoalsScreen> {
       SmType = MmTypeController.text;
       SmAmt = MmAmtController.text;
 
-      print('Debugging: ' + MmAmt + ' ' + MmType);
-      print('Debugging: ' + BmAmt + ' ' + BmType);
-      print('Debugging: ' + SmAmt + ' ' + SmType);
+      var snapshots = firestore.collection('goals').doc(docID).update({
+        'body': [Bname, Bdesc, BmType, BmAmt, 'body'],
+        'mind': [Mname, Mdesc, MmType, MmAmt, 'mind'],
+        'spirit': [Sname, Sdesc, SmType, SmAmt, 'spirit'],
+      });
     });
   }
 
@@ -159,12 +163,6 @@ class _GoalsScreen extends State<GoalsScreen> {
         child: ElevatedButton(
           onPressed: () {
             updateDB();
-            var collection = FirebaseFirestore.instance.collection('goals');
-            collection
-                .doc(
-                    'dh2U5PjPbWGjKMkPaMqw') // <-- Doc ID where data should be updated.
-                .update({'name': Mname});
-            print("Collection: " + collection.id);
             Navigator.pop(context);
           },
           child: Text('Submit Changes', style: TextStyle(fontSize: 30)),
