@@ -57,7 +57,16 @@ class _GoalsScreen extends State<GoalsScreen> {
   // final Stream<QuerySnapshot> _usersStream =
   //     FirebaseFirestore.instance.collection('goals').snapshots();
   void parseDesc(String description) {
-    
+    var char;
+
+    for (int i = 0; i < description.length; i++) {
+      if (description[i] == ' ') {
+        return char;
+      } else {
+        char += description[i];
+        print('CHAR_________: ' + char);
+      }
+    }
   }
 
   //Would the controllers go here? no bc here is a stateless widget.
@@ -68,19 +77,23 @@ class _GoalsScreen extends State<GoalsScreen> {
       MmType = MmTypeController.text;
       MmAmt = MmAmtController.text;
 
-      Bname = MnameController.text;
-      Bdesc = MdescController.text;
-      BmType = MmTypeController.text;
-      BmAmt = MmAmtController.text;
+      Bname = BnameController.text;
+      Bdesc = BdescController.text;
+      BmType = BmTypeController.text;
+      BmAmt = BmAmtController.text;
 
-      Sname = MnameController.text;
-      Sdesc = MdescController.text;
-      SmType = MmTypeController.text;
-      SmAmt = MmAmtController.text;
+      Sname = SnameController.text;
+      Sdesc = SdescController.text;
+      SmType = SmTypeController.text;
+      SmAmt = SmAmtController.text;
 
-      var snapshots = firestore.collection('goals').doc(docID).update({
+      var snapshot1 = firestore.collection('goals').doc(docID).update({
         'body': [Bname, Bdesc, BmType, BmAmt, 'body'],
+      });
+      var snapshot2 = firestore.collection('goals').doc(docID).update({
         'mind': [Mname, Mdesc, MmType, MmAmt, 'mind'],
+      });
+      var snapshot3 = firestore.collection('goals').doc(docID).update({
         'spirit': [Sname, Sdesc, SmType, SmAmt, 'spirit'],
       });
     });
@@ -101,7 +114,7 @@ class _GoalsScreen extends State<GoalsScreen> {
             ListView(padding: EdgeInsets.all(30), shrinkWrap: true, children: [
           Container(
             child: TextField(
-                controller: MnameController,
+                controller: MdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Mental Goal')),
           ),
@@ -110,7 +123,7 @@ class _GoalsScreen extends State<GoalsScreen> {
                   Text('Hint: use a short phrase like "Meditate for 5 min"')),
           Container(
             child: TextField(
-                controller: BnameController,
+                controller: BdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Body Goal')),
           ),
@@ -118,7 +131,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               child: Text('Hint: use a short phrase like "Run for 10 min"')),
           Container(
             child: TextField(
-                controller: SnameController,
+                controller: SdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Spiritual Goal')),
           ),
@@ -163,6 +176,9 @@ class _GoalsScreen extends State<GoalsScreen> {
         child: ElevatedButton(
           onPressed: () {
             updateDB();
+            parseDesc(Mdesc);
+            parseDesc(Bdesc);
+            parseDesc(Sdesc);
             Navigator.pop(context);
           },
           child: Text('Submit Changes', style: TextStyle(fontSize: 30)),

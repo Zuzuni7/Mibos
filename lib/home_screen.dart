@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               child: Image.asset('assets/images/icon.png')),
           centerTitle: true,
           toolbarHeight: 150, // default is 56
-          toolbarOpacity: 0.5,
+          toolbarOpacity: 0.75,
           shadowColor: Colors.blue,
           backgroundColor: Colors.white,
           elevation: 10,
@@ -32,15 +32,15 @@ class HomePage extends StatelessWidget {
           //Maybe wrap this ListView in a Touch Area for progress update
           shrinkWrap: true,
           children: [
+            MindCard(),
             BodyCard(),
             SpiritCard(),
-            MindCard(),
             ReportProgress(),
-            Flexible(
-                child: Column(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [EditGoals(), UpdateGoalsButton()],
-            )),
+            ),
           ], // This child widget is breaking the everything and idky
           padding: EdgeInsets.all(20),
         ),

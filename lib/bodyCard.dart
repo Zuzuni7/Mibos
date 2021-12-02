@@ -33,6 +33,7 @@ class _CardState extends State<BodyCard> {
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
+
             if (data['body'][0] == null) {
               data['body'][0] == 'No value found';
             } else if (data['body'][1] == null) {
@@ -42,7 +43,8 @@ class _CardState extends State<BodyCard> {
               title: Text(data['body'][1]),
               subtitle: Text(data['body'][0]),
               leading: Text(data['body'][4]),
-              trailing: Text(data['body'][3] + ' ' + data['body'][2]),
+              trailing:
+                  Text(data['body'][3] + ' ' + data['body'][2] + 'remaining'),
             );
           }).toList(),
         );

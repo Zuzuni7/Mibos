@@ -37,7 +37,8 @@ class _CardState extends State<MindCard> {
               title: Text(data['mind'][1]),
               subtitle: Text(data['mind'][0]),
               leading: Text(data['mind'][4]),
-              trailing: Text(data['mind'][3] + ' ' + data['mind'][2]),
+              trailing:
+                  Text(data['mind'][3] + ' ' + data['mind'][2] + 'remaining'),
             );
           }).toList(),
         );

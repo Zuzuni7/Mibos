@@ -44,7 +44,8 @@ class _CardState extends State<SpiritCard> {
               title: Text(data['spirit'][1]),
               subtitle: Text(data['spirit'][0]),
               leading: Text(data['spirit'][4]),
-              trailing: Text(data['spirit'][3] + ' ' + data['spirit'][2]),
+              trailing: Text(
+                  data['spirit'][3] + ' ' + data['spirit'][2] + 'remaining'),
             );
           }).toList(),
         );
