@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mibos_app/button.dart';
+import 'package:mibos_app/main.dart';
 import 'package:mibos_app/mindCard.dart';
 import 'package:mibos_app/spiritCard.dart';
 import 'bodyCard.dart';
@@ -54,10 +55,13 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                if (true == true) //apply global var logic from prgress bar
-                  Avatar('assets/images/BMO.gif')
+                if (mindPercent >
+                    0.75) //apply global var logic from prgress bar
+                  //Avatar('assets/images/BMO.gif')
+                  Text('Avatar hooplah')
                 else
-                  (Avatar('assets/images/avatar110.gif')),
+                  //(Avatar('assets/images/avatar110.gif')),
+                  Text('Avatar hooplah #2')
               ],
             )));
   }

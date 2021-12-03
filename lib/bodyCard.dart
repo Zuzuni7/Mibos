@@ -43,8 +43,8 @@ class _CardState extends State<BodyCard> {
               title: Text(data['body'][1]),
               subtitle: Text(data['body'][0]),
               leading: Text(data['body'][4]),
-              trailing:
-                  Text(data['body'][3] + ' ' + data['body'][2] + 'remaining'),
+              trailing: Text(
+                  data['body'][3] + ' ' + data['body'][2] + ' ' + 'remaining'),
             );
           }).toList(),
         );

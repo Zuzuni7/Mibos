@@ -35,36 +35,43 @@ class _GoalsScreen extends State<GoalsScreen> {
   final SmAmtController = TextEditingController();
   final StypeController = TextEditingController();
 
-  String Mname = 'No data';
-  String Mdesc = 'No data';
-  static const String Mtype = 'mind';
-  String MmAmt = 'No data';
-  String MmType = 'No data';
-
-  String Bname = 'No data';
-  String Bdesc = 'No data';
   static const String Btype = 'body';
-  String BmAmt = 'No data';
-  String BmType = 'No data';
-
-  String Sname = 'No data';
-  String Sdesc = 'No data';
+  static const String Mtype = 'mind';
   static const String Stype = 'spirit';
-  String SmAmt = 'No data';
-  String SmType = 'No data';
+
+  String Mname = '';
+  String Mdesc = '';
+  String MmAmt = '10';
+  String MmType = '';
+  String Bname = '';
+  String Bdesc = '';
+  String BmAmt = '4';
+  String BmType = '';
+  String Sname = '';
+  String Sdesc = '';
+  String SmAmt = '7';
+  String SmType = '';
+
+  void calcPercent() {
+    mindPercent = currMmAmt / double.parse(this.SmAmt);
+    bodyPercent = currBmAmt / double.parse(this.BmAmt);
+    spiritPercent = currSmAmt / double.parse(this.MmAmt);
+    percent = (mindPercent + bodyPercent + spiritPercent) / 3;
+  }
 
   // // Not sure what this is for yet.
   // final Stream<QuerySnapshot> _usersStream =
   //     FirebaseFirestore.instance.collection('goals').snapshots();
   void parseDesc(String description) {
-    var char;
+    var name;
 
     for (int i = 0; i < description.length; i++) {
-      if (description[i] == ' ') {
-        return char;
+      if (description[i + 1] == ' ') {
+        Mname = name;
+        return name;
       } else {
-        char += description[i];
-        print('CHAR_________: ' + char);
+        name = description[i] + description[i + 1];
+        //print('CHAR_________: ' + char);
       }
     }
   }
@@ -145,8 +152,8 @@ class _GoalsScreen extends State<GoalsScreen> {
               child: TextField(
                 controller: MmAmtController,
                 keyboardType: TextInputType.text,
-                decoration:
-                    InputDecoration(hintText: 'Distance/Time/Count (Mind)'),
+                decoration: InputDecoration(
+                    hintText: 'Amount of times, mins, hours, etc (Mind)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
@@ -154,8 +161,8 @@ class _GoalsScreen extends State<GoalsScreen> {
               child: TextField(
                 controller: BmAmtController,
                 keyboardType: TextInputType.text,
-                decoration:
-                    InputDecoration(hintText: 'Distance/Time/Count (Body)'),
+                decoration: InputDecoration(
+                    hintText: 'Amount of times, mins, hours, etc (Body)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
@@ -163,22 +170,50 @@ class _GoalsScreen extends State<GoalsScreen> {
               child: TextField(
                 controller: SmAmtController,
                 keyboardType: TextInputType.text,
-                decoration:
-                    InputDecoration(hintText: 'Distance/Time/Count (Spirit)'),
+                decoration: InputDecoration(
+                    hintText: 'Amount of times, mins, hours, etc (Spirit)'),
               )),
-          // Measure Amounts
-          Container(),
-          Container(),
-          Container(),
+          // Measure Types
+          Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+              child: TextField(
+                controller: MmTypeController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    hintText:
+                        'Measurement type eg., min, hours, times, etc... (Mind)'),
+              )),
+          Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+              child: TextField(
+                controller: BmTypeController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    hintText:
+                        'Measurement type eg., min, hours, times, etc... (Body)'),
+              )),
+          Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+              child: TextField(
+                controller: SmTypeController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    hintText:
+                        'Measurement type eg., min, hours, times, etc... (Spirit)'),
+              )),
         ]),
       ),
       bottomNavigationBar: Container(
         child: ElevatedButton(
           onPressed: () {
-            updateDB();
             parseDesc(Mdesc);
             parseDesc(Bdesc);
             parseDesc(Sdesc);
+            calcPercent();
+            updateDB();
             Navigator.pop(context);
           },
           child: Text('Submit Changes', style: TextStyle(fontSize: 30)),

@@ -4,13 +4,6 @@ import 'goal_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'updateGoals.dart';
 
-//Temporary Globals
-double percent = 0.80;
-double MmAmt = 0;
-double BmAmt = 0;
-double SmAmt = 0;
-String docID = 'dh2U5PjPbWGjKMkPaMqw';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -33,3 +26,13 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// Implemented into firebase
+double percent = 0.0;
+double currMmAmt = 0;
+double currBmAmt = 0;
+double currSmAmt = 0;
+double mindPercent = 0.0;
+double bodyPercent = 0.0;
+double spiritPercent = 0.0;
+String docID = 'dh2U5PjPbWGjKMkPaMqw';
