@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mibos_app/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'goal_screen.dart';
 
 class UpdateGoals extends StatefulWidget {
   const UpdateGoals({Key? key}) : super(key: key);
@@ -13,6 +15,16 @@ class _UpdateGoalsState extends State<UpdateGoals> {
   final Mcontroller = TextEditingController();
   final Bcontroller = TextEditingController();
   final Scontroller = TextEditingController();
+
+  void updateData() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    final data =
+        await firestore.collection('mind').doc(docID).get(); //get the data
+    DocumentSnapshot snapshot = data;
+    currMmAmt = data['mind'][3];
+    currBmAmt = data['body'][3];
+    currSmAmt = data['spirit'][3];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +77,9 @@ class _UpdateGoalsState extends State<UpdateGoals> {
               currBmAmt = double.parse(Bcontroller.text);
               currMmAmt = double.parse(Mcontroller.text);
               currSmAmt = double.parse(Scontroller.text);
+
+              updateData();
+
               Navigator.pop(context);
             },
             child: Text('Submit Changes', style: TextStyle(fontSize: 30)),

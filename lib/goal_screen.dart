@@ -57,6 +57,7 @@ class _GoalsScreen extends State<GoalsScreen> {
     bodyPercent = currBmAmt / double.parse(this.BmAmt);
     spiritPercent = currSmAmt / double.parse(this.MmAmt);
     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
+    //percent = 0.8;
   }
 
   // // Not sure what this is for yet.
@@ -67,7 +68,7 @@ class _GoalsScreen extends State<GoalsScreen> {
 
     for (int i = 0; i < description.length; i++) {
       if (description[i + 1] == ' ') {
-        Mname = name;
+        this.Mname = name;
         return name;
       } else {
         name = description[i] + description[i + 1];
@@ -121,7 +122,7 @@ class _GoalsScreen extends State<GoalsScreen> {
             ListView(padding: EdgeInsets.all(30), shrinkWrap: true, children: [
           Container(
             child: TextField(
-                controller: MdescController,
+                controller: this.MdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Mental Goal')),
           ),
@@ -130,7 +131,7 @@ class _GoalsScreen extends State<GoalsScreen> {
                   Text('Hint: use a short phrase like "Meditate for 5 min"')),
           Container(
             child: TextField(
-                controller: BdescController,
+                controller: this.BdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Body Goal')),
           ),
@@ -138,7 +139,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               child: Text('Hint: use a short phrase like "Run for 10 min"')),
           Container(
             child: TextField(
-                controller: SdescController,
+                controller: this.SdescController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(hintText: 'Spiritual Goal')),
           ),
@@ -150,35 +151,35 @@ class _GoalsScreen extends State<GoalsScreen> {
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
               child: TextField(
-                controller: MmAmtController,
+                controller: this.MmAmtController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: 'Amount of times, mins, hours, etc (Mind)'),
+                    hintText: 'Repetitions, time, or distance (Mind)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
               child: TextField(
-                controller: BmAmtController,
+                controller: this.BmAmtController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: 'Amount of times, mins, hours, etc (Body)'),
+                    hintText: 'Repetitions, time, or distance (Body)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
               child: TextField(
-                controller: SmAmtController,
+                controller: this.SmAmtController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: 'Amount of times, mins, hours, etc (Spirit)'),
+                    hintText: 'Repetitions, time, or distance (Spirit)'),
               )),
           // Measure Types
           Container(
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
               child: TextField(
-                controller: MmTypeController,
+                controller: this.MmTypeController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     hintText:
@@ -188,7 +189,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
               child: TextField(
-                controller: BmTypeController,
+                controller: this.BmTypeController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     hintText:
@@ -198,7 +199,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               margin: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
               child: TextField(
-                controller: SmTypeController,
+                controller: this.SmTypeController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     hintText:

@@ -7,7 +7,21 @@ import 'updateGoals.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  extractData();
   runApp(MyApp());
+}
+
+double percent = 0.0;
+double currMmAmt = 0;
+double currBmAmt = 0;
+double currSmAmt = 0;
+double mindPercent = 0.0;
+double bodyPercent = 0.0;
+double spiritPercent = 0.0;
+String docID = 'dh2U5PjPbWGjKMkPaMqw';
+
+void extractData() {
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -28,11 +42,4 @@ class MyApp extends StatelessWidget {
 }
 
 // Implemented into firebase
-double percent = 0.0;
-double currMmAmt = 0;
-double currBmAmt = 0;
-double currSmAmt = 0;
-double mindPercent = 0.0;
-double bodyPercent = 0.0;
-double spiritPercent = 0.0;
-String docID = 'dh2U5PjPbWGjKMkPaMqw';
+
