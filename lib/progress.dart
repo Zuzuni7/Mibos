@@ -29,9 +29,9 @@ class _ReportProgressState extends State<ReportProgress>
     super.dispose();
   }
 
-  calcPercentage(dbl) {
-    return dbl * 100;
-  }
+  // calcPercentage(dbl) {
+  //   return dbl * 100;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _ReportProgressState extends State<ReportProgress>
       child: Column(
         children: <Widget>[
           Text(
-            'Current Progress: ' + calcPercentage(percent).toString() + '%',
+            'Current Progress: ' + percent.toStringAsFixed(2) + '%',
             style: TextStyle(fontSize: 20),
           ),
           LinearPercentIndicator(

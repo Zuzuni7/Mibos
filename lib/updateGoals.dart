@@ -45,10 +45,9 @@ class _UpdateGoalsState extends State<UpdateGoals> {
         .update({'currSmAmt': double.parse(Scontroller.text)});
 
     // Calculations for total percentage and progress bar
-    mindPercent = double.parse(data2[{'currMmAmt'}]);
-    print(mindPercent);
-    //bodyPercent = data2[{bodyPercent}] / bAmt;
-    //spiritPercent = data2[{spiritPercent}] / sAmt;
+    mindPercent = double.parse(Mcontroller.text) / mAmt;
+    bodyPercent = double.parse(Bcontroller.text) / bAmt;
+    spiritPercent = double.parse(Scontroller.text) / sAmt;
 
     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
     if (percent > 1 || percent < 0) {
