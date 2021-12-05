@@ -18,12 +18,42 @@ class _UpdateGoalsState extends State<UpdateGoals> {
 
   void updateData() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final data =
-        await firestore.collection('mind').doc(docID).get(); //get the data
-    DocumentSnapshot snapshot = data;
-    currMmAmt = data['mind'][3];
-    currBmAmt = data['body'][3];
-    currSmAmt = data['spirit'][3];
+    final data1 = await firestore.collection('goals').doc(docID).get();
+    final data2 = await firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .get(); //get the data
+
+    // SELECT goal mAmt to compare against current mAmt
+    // These are the target goal amounts
+    var mAmt = double.parse(data1['mind'][3]);
+    var bAmt = double.parse(data1['body'][3]);
+    var sAmt = double.parse(data1['spirit'][3]);
+
+    // These are the current amounts that will be updated by the user
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'currMmAmt': double.parse(Mcontroller.text)});
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'currBmAmt': double.parse(Bcontroller.text)});
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'currSmAmt': double.parse(Scontroller.text)});
+
+    // Calculations for total percentage and progress bar
+    mindPercent = double.parse(data2[{'currMmAmt'}]);
+    print(mindPercent);
+    //bodyPercent = data2[{bodyPercent}] / bAmt;
+    //spiritPercent = data2[{spiritPercent}] / sAmt;
+
+    percent = (mindPercent + bodyPercent + spiritPercent) / 3;
+    if (percent > 1 || percent < 0) {
+      print('Ya dun messed up somewhere aaron');
+    }
   }
 
   @override

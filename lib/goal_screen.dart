@@ -52,17 +52,6 @@ class _GoalsScreen extends State<GoalsScreen> {
   String SmAmt = '7';
   String SmType = '';
 
-  void calcPercent() {
-    mindPercent = currMmAmt / double.parse(this.SmAmt);
-    bodyPercent = currBmAmt / double.parse(this.BmAmt);
-    spiritPercent = currSmAmt / double.parse(this.MmAmt);
-    percent = (mindPercent + bodyPercent + spiritPercent) / 3;
-    //percent = 0.8;
-  }
-
-  // // Not sure what this is for yet.
-  // final Stream<QuerySnapshot> _usersStream =
-  //     FirebaseFirestore.instance.collection('goals').snapshots();
   void parseDesc(String description) {
     var name;
 
@@ -213,7 +202,7 @@ class _GoalsScreen extends State<GoalsScreen> {
             parseDesc(Mdesc);
             parseDesc(Bdesc);
             parseDesc(Sdesc);
-            calcPercent();
+            //calcPercent();
             updateDB();
             Navigator.pop(context);
           },
@@ -236,3 +225,15 @@ class EditGoalsHeader extends StatelessWidget {
     );
   }
 }
+
+
+// void calcPercent() {
+//     mindPercent = 6 / double.parse(this.SmAmt);
+//     bodyPercent = 5 / double.parse(this.BmAmt);
+//     spiritPercent = 9 / double.parse(this.MmAmt);
+//     print(double.parse(this.SmAmt));
+//     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
+//     if (percent > 1 || percent < 0) {
+//       percent = 0.5;
+//     }
+//   }

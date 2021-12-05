@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'main.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-// Stream collectionStream =
-//     FirebaseFirestore.instance.collection('goals').snapshots();
-// Stream documentStream = FirebaseFirestore.instance
-//     .collection('goals')
-//     .doc('dh2U5PjPbWGjKMkPaMqw')
-//     .snapshots();
 
 class SpiritCard extends StatefulWidget {
   const SpiritCard({Key? key}) : super(key: key);
@@ -57,6 +51,8 @@ class _CardState extends State<SpiritCard> {
   }
 }
 
+
+//currSmAmt.toString() + ' / ' +
 
 
 

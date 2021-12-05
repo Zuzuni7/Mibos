@@ -34,11 +34,11 @@ class _CardState extends State<BodyCard> {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
 
-            if (data['body'][0] == null) {
-              data['body'][0] == 'No value found';
-            } else if (data['body'][1] == null) {
-              data['body'][1] == 'No value found';
-            }
+            // if (data['body'][0] == null) {
+            //   data['body'][0] == 'No value found';
+            // } else if (data['body'][1] == null) {
+            //   data['body'][1] == 'No value found';
+            // }
             return ListTile(
               title: Text(data['body'][1]),
               subtitle: Text(data['body'][0]),
