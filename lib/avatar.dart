@@ -11,7 +11,7 @@ class Avatar extends StatefulWidget {
 
 class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-
+  // File path for the image
   final String condition; // String recieved from default constructor
 
   _AvatarState(this.condition);

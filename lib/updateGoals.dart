@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mibos_app/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'goal_screen.dart';
+import 'globals.dart';
 
 class UpdateGoals extends StatefulWidget {
   const UpdateGoals({Key? key}) : super(key: key);
@@ -44,6 +44,18 @@ class _UpdateGoalsState extends State<UpdateGoals> {
         .doc('percentageCalcs')
         .update({'currSmAmt': double.parse(Scontroller.text)});
 
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'mindPercent': mindPercent});
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'bodyPercent': bodyPercent});
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'spiritPercent': spiritPercent});
     // Calculations for total percentage and progress bar
     mindPercent = double.parse(Mcontroller.text) / mAmt;
     bodyPercent = double.parse(Bcontroller.text) / bAmt;
@@ -67,7 +79,7 @@ class _UpdateGoalsState extends State<UpdateGoals> {
             children: [
               Container(
                 margin: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                    horizontal: MediaQuery.of(context).size.width * 0.5 * 0.5),
                 child: TextField(
                     controller: Mcontroller,
                     keyboardType: TextInputType.number,

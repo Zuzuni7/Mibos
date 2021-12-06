@@ -8,6 +8,7 @@ import 'bodyCard.dart';
 import 'avatar.dart';
 import 'button.dart';
 import 'progress.dart';
+import 'globals.dart';
 
 class HomePage extends StatelessWidget {
   @override

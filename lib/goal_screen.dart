@@ -84,13 +84,13 @@ class _GoalsScreen extends State<GoalsScreen> {
       SmType = SmTypeController.text;
       SmAmt = SmAmtController.text;
 
-      var snapshot1 = firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc(docID).update({
         'body': [Bname, Bdesc, BmType, BmAmt, 'body'],
       });
-      var snapshot2 = firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc(docID).update({
         'mind': [Mname, Mdesc, MmType, MmAmt, 'mind'],
       });
-      var snapshot3 = firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc(docID).update({
         'spirit': [Sname, Sdesc, SmType, SmAmt, 'spirit'],
       });
     });

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mibos_app/main.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'globals.dart';
 
 class ReportProgress extends StatefulWidget {
   const ReportProgress({Key? key}) : super(key: key);
@@ -61,6 +62,6 @@ class _ReportProgressState extends State<ReportProgress>
  * Functionality
  * 1. Pull data from the firebase
  * 2. Display progress bars. Return Bars
- * 3. Do math for calculating percentages??
- * 4.
+ * 3. Do math for calculating percentages
+ * 
  */
