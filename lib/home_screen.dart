@@ -56,13 +56,18 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                if (mindPercent >
-                    0.75) //apply global var logic from prgress bar
-                  //Avatar('assets/images/BMO.gif')
-                  Text('Avatar hooplah')
-                else
-                  //(Avatar('assets/images/avatar110.gif')),
+                if (mindPercent > 0.75)
+                  if(bodyPercent > 0.75)
+                    if(spiritPercent > 0.75)
+                      Avatar('assets/images/avatar111.gif')
+                    else
+                      Avatar('assets/images/avatar110')
+                  else if(spiritPercent > 0.75)
+                    Avatar('assets/images/avatar101.gif')
+                else if (bodyPercent > 0.75)
                   Text('Avatar hooplah #2')
+                else if (spiritPercent > 0.75)
+                  Text('Avatar hooplah #3')
               ],
             )));
   }

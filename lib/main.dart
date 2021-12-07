@@ -5,14 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'updateGoals.dart';
 
-// double percent = 0.0;
-// double currMmAmt = 0;
-// double currBmAmt = 0;
-// double currSmAmt = 0;
-// double mindPercent = 0.0;
-// double bodyPercent = 0.0;
-// double spiritPercent = 0.0;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
