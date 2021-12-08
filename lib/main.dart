@@ -4,15 +4,16 @@ import 'goal_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'updateGoals.dart';
+import 'globals.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  extractData();
+  await extractData();
   runApp(MyApp());
 }
 
-String docID = 'dh2U5PjPbWGjKMkPaMqw';
+//String docID = 'dh2U5PjPbWGjKMkPaMqw';
 
 // //Map<String, dynamic> data = .data()! as Map<String, dynamic>;
 // final data = firestore.collection('percents').doc('percentageCalcs').get();
@@ -22,14 +23,14 @@ extractData() async {
   final data =
       await firestore.collection('percents').doc('percentageCalcs').get();
 
-  double percent = 0.9;
-  double currMmAmt = data['currMmAmt'];
-  double currBmAmt = data['currBmAmt'];
-  double currSmAmt = data['currSmAmt'];
+  var percent = Globals().getPercent();
+  var currMmAmt = Globals().getCurrMmAmt();
+  var currBmAmt = Globals().getCurrBmAmt();
+  var currSmAmt = Globals().getCurrSmAmt();
 
-  double mindPercent = data['mindPercent'];
-  double bodyPercent = data['bodyPercent'];
-  double spiritPercent = data['spiritPercent'];
+  var mindPercent = Globals().getMindPercent();
+  var bodyPercent = Globals().getBodyPercent();
+  var spiritPercent = Globals().getSpiritPercent();
 }
 
 class MyApp extends StatelessWidget {

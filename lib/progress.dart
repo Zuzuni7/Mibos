@@ -13,6 +13,7 @@ class ReportProgress extends StatefulWidget {
 class _ReportProgressState extends State<ReportProgress>
     with TickerProviderStateMixin {
   late AnimationController controller;
+  var percent = Globals().getPercent();
   @override
   void initState() {
     controller =
@@ -41,7 +42,7 @@ class _ReportProgressState extends State<ReportProgress>
       child: Column(
         children: <Widget>[
           Text(
-            'Current Progress: ' + percent.toStringAsFixed(2) + '%',
+            'Current Progress: ' + double.parse(percent).toString() + '%',
             style: TextStyle(fontSize: 20),
           ),
           LinearPercentIndicator(

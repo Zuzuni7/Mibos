@@ -18,7 +18,8 @@ class _UpdateGoalsState extends State<UpdateGoals> {
 
   void updateData() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final data1 = await firestore.collection('goals').doc(docID).get();
+    final data1 =
+        await firestore.collection('goals').doc('dh2U5PjPbWGjKMkPaMqw').get();
     final data2 = await firestore
         .collection('percents')
         .doc('percentageCalcs')

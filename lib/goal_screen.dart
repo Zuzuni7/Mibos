@@ -5,8 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'main.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
-final fb =
-    FirebaseFirestore.instance.collection('goals').doc(docID).snapshots();
+final fb = FirebaseFirestore.instance
+    .collection('goals')
+    .doc('dh2U5PjPbWGjKMkPaMqw')
+    .snapshots();
 
 class GoalsScreen extends StatefulWidget {
   //const UserInput({Key? key}) : super(key: key);
@@ -35,21 +37,17 @@ class _GoalsScreen extends State<GoalsScreen> {
   final SmAmtController = TextEditingController();
   final StypeController = TextEditingController();
 
-  static const String Btype = 'body';
-  static const String Mtype = 'mind';
-  static const String Stype = 'spirit';
-
   String Mname = '';
   String Mdesc = '';
-  String MmAmt = '10';
+  String MmAmt = '';
   String MmType = '';
   String Bname = '';
   String Bdesc = '';
-  String BmAmt = '4';
+  String BmAmt = '';
   String BmType = '';
   String Sname = '';
   String Sdesc = '';
-  String SmAmt = '7';
+  String SmAmt = '';
   String SmType = '';
 
   void parseDesc(String description) {
@@ -84,13 +82,13 @@ class _GoalsScreen extends State<GoalsScreen> {
       SmType = SmTypeController.text;
       SmAmt = SmAmtController.text;
 
-      firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc('dh2U5PjPbWGjKMkPaMqw').update({
         'body': [Bname, Bdesc, BmType, BmAmt, 'body'],
       });
-      firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc('dh2U5PjPbWGjKMkPaMqw').update({
         'mind': [Mname, Mdesc, MmType, MmAmt, 'mind'],
       });
-      firestore.collection('goals').doc(docID).update({
+      firestore.collection('goals').doc('dh2U5PjPbWGjKMkPaMqw').update({
         'spirit': [Sname, Sdesc, SmType, SmAmt, 'spirit'],
       });
     });
@@ -225,15 +223,3 @@ class EditGoalsHeader extends StatelessWidget {
     );
   }
 }
-
-
-// void calcPercent() {
-//     mindPercent = 6 / double.parse(this.SmAmt);
-//     bodyPercent = 5 / double.parse(this.BmAmt);
-//     spiritPercent = 9 / double.parse(this.MmAmt);
-//     print(double.parse(this.SmAmt));
-//     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
-//     if (percent > 1 || percent < 0) {
-//       percent = 0.5;
-//     }
-//   }

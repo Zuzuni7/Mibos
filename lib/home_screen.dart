@@ -57,17 +57,24 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 if (mindPercent > 0.75)
-                  if(bodyPercent > 0.75)
-                    if(spiritPercent > 0.75)
+                  if (bodyPercent > 0.75)
+                    if (spiritPercent > 0.75)
                       Avatar('assets/images/avatar111.gif')
                     else
-                      Avatar('assets/images/avatar110')
-                  else if(spiritPercent > 0.75)
+                      Avatar('assets/images/avatar110.gif')
+                  else if (spiritPercent > 0.75)
                     Avatar('assets/images/avatar101.gif')
+                  else
+                    Avatar('assets/images/avatar100.gif')
                 else if (bodyPercent > 0.75)
-                  Text('Avatar hooplah #2')
+                  if (spiritPercent > 0.75)
+                    Avatar('assets/images/avatar011')
+                  else
+                    Avatar('assets/images/avatar010')
                 else if (spiritPercent > 0.75)
-                  Text('Avatar hooplah #3')
+                  Avatar('assets/images/avatar001')
+                else
+                  Avatar('assets/images/avatar000')
               ],
             )));
   }
