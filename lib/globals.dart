@@ -45,7 +45,7 @@ class Globals {
       currSmAmt,
       mindPercent,
       bodyPercent,
-      spiritPercent}) async {
+      spiritPercent}) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
     if (percent != null) {
@@ -77,7 +77,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    percent = data['percent'];
+    percent = double.parse(data['percent']);
     return percent;
   }
 
@@ -85,7 +85,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    currBmAmt = data['currBmAmt'];
+    currBmAmt = double.parse(data['currBmAmt']);
     return currBmAmt;
   }
 
@@ -93,7 +93,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    currMmAmt = data['currMmAmt'];
+    currMmAmt = double.parse(data['currMmAmt']);
     return currMmAmt;
   }
 
@@ -101,7 +101,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    currSmAmt = data['currSmAmt'];
+    currSmAmt = double.parse(data['currSmAmt']);
     return currSmAmt;
   }
 
@@ -109,7 +109,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    mindPercent = data['mindPercent'];
+    mindPercent = double.parse(data['mindPercent']);
     return mindPercent;
   }
 
@@ -117,7 +117,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    bodyPercent = data['bodyPercent'];
+    bodyPercent = double.parse(data['bodyPercent']);
     return bodyPercent;
   }
 
@@ -125,7 +125,7 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
-    spiritPercent = data['spiritPercent'];
+    spiritPercent = double.parse(data['spiritPercent']);
     return spiritPercent;
   }
 }

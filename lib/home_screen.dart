@@ -10,7 +10,29 @@ import 'button.dart';
 import 'progress.dart';
 import 'globals.dart';
 
-class HomePage extends StatelessWidget {
+//Add Globals() here for mind,body,spirit percents
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var mindPercent;
+  var bodyPercent;
+  var spiritPercent;
+
+  @override
+  void initState() {
+    /**Gotta figure out a way to use async functions here and convert Future<double> to a regular double */
+    mindPercent = Globals().getMindPercent();
+    bodyPercent = Globals().getBodyPercent();
+    spiritPercent = Globals().getSpiritPercent();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +59,7 @@ class HomePage extends StatelessWidget {
             MindCard(),
             BodyCard(),
             SpiritCard(),
-            ReportProgress(),
+            //ReportProgress(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,13 +90,13 @@ class HomePage extends StatelessWidget {
                     Avatar('assets/images/avatar100.gif')
                 else if (bodyPercent > 0.75)
                   if (spiritPercent > 0.75)
-                    Avatar('assets/images/avatar011')
+                    Avatar('assets/images/avatar011.gif')
                   else
-                    Avatar('assets/images/avatar010')
+                    Avatar('assets/images/avatar010.gif')
                 else if (spiritPercent > 0.75)
-                  Avatar('assets/images/avatar001')
+                  Avatar('assets/images/avatar001.gif')
                 else
-                  Avatar('assets/images/avatar000')
+                  Avatar('assets/images/avatar000.gif')
               ],
             )));
   }

@@ -13,9 +13,10 @@ class ReportProgress extends StatefulWidget {
 class _ReportProgressState extends State<ReportProgress>
     with TickerProviderStateMixin {
   late AnimationController controller;
-  var percent = Globals().getPercent();
+  var percent;
   @override
   void initState() {
+    percent = Globals().getPercent();
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 5))
           ..addListener(() {

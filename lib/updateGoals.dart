@@ -31,6 +31,24 @@ class _UpdateGoalsState extends State<UpdateGoals> {
     var bAmt = double.parse(data1['body'][3]);
     var sAmt = double.parse(data1['spirit'][3]);
 
+    /** 
+     * Named arguments setters here
+     * */
+
+    Globals().setGlobals(currMmAmt: double.parse(Mcontroller.text));
+    Globals().setGlobals(currBmAmt: double.parse(Bcontroller.text));
+    Globals().setGlobals(currSmAmt: double.parse(Scontroller.text));
+
+    var currMmAmt = await Globals().getCurrMmAmt();
+    var currBmAmt = await Globals().getCurrBmAmt();
+    var currSmAmt = await Globals().getCurrSmAmt();
+
+    var mindPercent = await Globals().getMindPercent();
+    var bodyPercent = await Globals().getBodyPercent();
+    var spiritPercent = await Globals().getSpiritPercent();
+
+    var percent = await Globals().getPercent();
+
     // These are the current amounts that will be updated by the user
     firestore
         .collection('percents')
@@ -57,15 +75,13 @@ class _UpdateGoalsState extends State<UpdateGoals> {
         .collection('percents')
         .doc('percentageCalcs')
         .update({'spiritPercent': spiritPercent});
+
     // Calculations for total percentage and progress bar
-    mindPercent = double.parse(Mcontroller.text) / mAmt;
-    bodyPercent = double.parse(Bcontroller.text) / bAmt;
-    spiritPercent = double.parse(Scontroller.text) / sAmt;
+    mindPercent = currMmAmt / mAmt;
+    bodyPercent = currBmAmt / bAmt;
+    spiritPercent = currSmAmt / sAmt;
 
     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
-    if (percent > 1 || percent < 0) {
-      print('Ya dun messed up somewhere aaron');
-    }
   }
 
   @override
@@ -115,11 +131,6 @@ class _UpdateGoalsState extends State<UpdateGoals> {
         bottomNavigationBar: Container(
           child: ElevatedButton(
             onPressed: () {
-              //Update gbls
-              currBmAmt = double.parse(Bcontroller.text);
-              currMmAmt = double.parse(Mcontroller.text);
-              currSmAmt = double.parse(Scontroller.text);
-
               updateData();
 
               Navigator.pop(context);
