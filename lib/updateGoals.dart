@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mibos_app/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'globals.dart';
+import 'home_screen.dart';
 
 class UpdateGoals extends StatefulWidget {
   const UpdateGoals({Key? key}) : super(key: key);
@@ -20,10 +20,6 @@ class _UpdateGoalsState extends State<UpdateGoals> {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data1 =
         await firestore.collection('goals').doc('dh2U5PjPbWGjKMkPaMqw').get();
-    final data2 = await firestore
-        .collection('percents')
-        .doc('percentageCalcs')
-        .get(); //get the data
 
     // SELECT goal mAmt to compare against current mAmt
     // These are the target goal amounts
@@ -82,6 +78,12 @@ class _UpdateGoalsState extends State<UpdateGoals> {
     spiritPercent = currSmAmt / sAmt;
 
     percent = (mindPercent + bodyPercent + spiritPercent) / 3;
+    firestore
+        .collection('percents')
+        .doc('percentageCalcs')
+        .update({'percent': percent});
+
+    print('Percent total after update $percent');
   }
 
   @override
@@ -95,34 +97,36 @@ class _UpdateGoalsState extends State<UpdateGoals> {
             shrinkWrap: true,
             children: [
               Container(
+                  margin: EdgeInsets.only(top: 50),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Enter in the numerical value below: ',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline, fontSize: 20),
+                  )),
+              Container(
                 margin: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.5 * 0.5),
+                    horizontal: MediaQuery.of(context).size.width * 0.5 * 0.75),
                 child: TextField(
                     controller: Mcontroller,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        hintText:
-                            'Update on what has been done so far. (Mind)')),
+                    decoration: InputDecoration(hintText: 'Mind Update')),
               ),
               Container(
                 margin: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                    horizontal: MediaQuery.of(context).size.width * 0.5 * 0.75),
                 child: TextField(
                     controller: Bcontroller,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        hintText:
-                            'Update on what has been done so far. (Body)')),
+                    decoration: InputDecoration(hintText: 'Body Update')),
               ),
               Container(
                 margin: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                    horizontal: MediaQuery.of(context).size.width * 0.5 * 0.75),
                 child: TextField(
                     controller: Scontroller,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        hintText:
-                            'Update on what has been done so far. (Spirit)')),
+                    decoration: InputDecoration(hintText: 'Spirit Update')),
               ),
             ],
           ),
@@ -133,7 +137,11 @@ class _UpdateGoalsState extends State<UpdateGoals> {
             onPressed: () {
               updateData();
 
+              Route route = MaterialPageRoute(builder: (context) => HomePage());
               Navigator.pop(context);
+              Navigator.push(context, route);
+              // Navigator.pushReplacement(
+              //     context, MaterialPageRoute(builder: (context) => HomePage()));
             },
             child: Text('Submit Changes', style: TextStyle(fontSize: 30)),
           ),

@@ -115,7 +115,7 @@ class _GoalsScreen extends State<GoalsScreen> {
           ),
           Container(
               child:
-                  Text('Hint: use a short phrase like "Meditate for 5 min"')),
+                  Text('Hint: Use a short phrase like "Meditate for 5 min"')),
           Container(
             child: TextField(
                 controller: this.BdescController,
@@ -123,7 +123,7 @@ class _GoalsScreen extends State<GoalsScreen> {
                 decoration: InputDecoration(hintText: 'Body Goal')),
           ),
           Container(
-              child: Text('Hint: use a short phrase like "Run for 10 min"')),
+              child: Text('Hint: Use a short phrase like "Run for 10 min"')),
           Container(
             child: TextField(
                 controller: this.SdescController,
@@ -131,40 +131,42 @@ class _GoalsScreen extends State<GoalsScreen> {
                 decoration: InputDecoration(hintText: 'Spiritual Goal')),
           ),
           Container(
-              child: Text('Hint: use a short phrase like "Pray 2 times"')),
+              child: Text('Hint: Use a short phrase like "Pray 2 times"')),
           //add more here.................................................................
           Container(
               padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                  horizontal: MediaQuery.of(context).size.width * 0.5 * 0.5),
               child: TextField(
                 controller: this.MmAmtController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: 'Repetitions, time, or distance (Mind)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                  horizontal: MediaQuery.of(context).size.width * 0.5 * 0.5),
               child: TextField(
                 controller: this.BmAmtController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     hintText: 'Repetitions, time, or distance (Body)'),
               )),
           Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.5),
+                  horizontal: MediaQuery.of(context).size.width * 0.5 * 0.5),
               child: TextField(
                 controller: this.SmAmtController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(),
                     hintText: 'Repetitions, time, or distance (Spirit)'),
               )),
           // Measure Types
           Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.75),
+              padding: EdgeInsets.only(top: 20),
               child: TextField(
                 controller: this.MmTypeController,
                 keyboardType: TextInputType.text,
@@ -174,7 +176,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               )),
           Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.75),
               child: TextField(
                 controller: this.BmTypeController,
                 keyboardType: TextInputType.text,
@@ -184,7 +186,7 @@ class _GoalsScreen extends State<GoalsScreen> {
               )),
           Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.50 * 0.75),
+                  horizontal: MediaQuery.of(context).size.width * 0.25 * 0.75),
               child: TextField(
                 controller: this.SmTypeController,
                 keyboardType: TextInputType.text,
@@ -197,10 +199,9 @@ class _GoalsScreen extends State<GoalsScreen> {
       bottomNavigationBar: Container(
         child: ElevatedButton(
           onPressed: () {
-            parseDesc(Mdesc);
-            parseDesc(Bdesc);
-            parseDesc(Sdesc);
-            //calcPercent();
+            //parseDesc(Mdesc);
+            //parseDesc(Bdesc);
+            //parseDesc(Sdesc);
             updateDB();
             Navigator.pop(context);
           },

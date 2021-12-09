@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mibos_app">
    <application
-        android:label="mibos_app"
+        android:label="MiBoS"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mibos_app/button.dart';
-import 'package:mibos_app/main.dart';
+import 'package:mibos_app/updateGoals.dart';
 import 'package:mibos_app/mindCard.dart';
 import 'package:mibos_app/spiritCard.dart';
 import 'bodyCard.dart';
@@ -14,6 +14,7 @@ import 'globals.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  static const routeName = 'homescreen';
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,10 +24,12 @@ class _HomePageState extends State<HomePage> {
   var mindPercent = 0.0;
   var bodyPercent = 0.0;
   var spiritPercent = 0.0;
+  var percent = 0.0;
 
   @override
   void initState() {
     setGlobals();
+    setState(() {});
     super.initState();
   }
 
@@ -34,6 +37,7 @@ class _HomePageState extends State<HomePage> {
     mindPercent = await Globals().getMindPercent();
     bodyPercent = await Globals().getBodyPercent();
     spiritPercent = await Globals().getSpiritPercent();
+    percent = await Globals().getPercent();
   }
 
   @override
@@ -62,11 +66,22 @@ class _HomePageState extends State<HomePage> {
             MindCard(),
             BodyCard(),
             SpiritCard(),
-            ReportProgress(),
+            new ReportProgress(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [EditGoals(), UpdateGoalsButton()],
+              children: [
+                EditGoals(),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UpdateGoals()))
+                          .then((value) => initState());
+                    },
+                    child: Text('Update Goals Screen'))
+              ],
             ),
           ], // This child widget is breaking the everything and idky
           padding: EdgeInsets.all(20),
@@ -99,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                 else if (spiritPercent > 0.75)
                   Avatar('assets/images/avatar001.gif')
                 else
-                  Avatar('assets/images/avatar000.gif')
+                  Avatar('assets/images/avatar101.gif')
               ],
             )));
   }

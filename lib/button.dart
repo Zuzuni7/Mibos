@@ -36,8 +36,8 @@ class UpdateGoalsButton extends StatelessWidget {
       children: [
         ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => UpdateGoals()));
+              //   Navigator.push(context,
+              //       MaterialPageRoute(builder: (context) => UpdateGoals())).then((value) => setState((){}));
             },
             child: const Text(
               'Update Goals',

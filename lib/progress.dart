@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mibos_app/main.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'globals.dart';
 
@@ -14,6 +13,7 @@ class _ReportProgressState extends State<ReportProgress>
     with TickerProviderStateMixin {
   late AnimationController controller;
   var percent = 0.0;
+  var rounded;
   @override
   void initState() {
     setPercent();
@@ -26,8 +26,12 @@ class _ReportProgressState extends State<ReportProgress>
     super.initState();
   }
 
+  // Query the percent from firebase, set it to a new variable, and cast it as a string
+  // I need a double for the LinearProgressBar and a string
   void setPercent() async {
     this.percent = await Globals().getPercent();
+    rounded = this.percent * 100;
+    rounded = rounded.toString();
   }
 
   @override
@@ -43,7 +47,7 @@ class _ReportProgressState extends State<ReportProgress>
       child: Column(
         children: <Widget>[
           Text(
-            'Current Progress: ' + percent.toString() + '%',
+            'Current Progress: ' + rounded.toString() + '%',
             style: TextStyle(fontSize: 20),
           ),
           LinearPercentIndicator(
@@ -56,7 +60,6 @@ class _ReportProgressState extends State<ReportProgress>
     );
   }
 }
-
 
 /**
  * This widget serves the purpose of reporting progress towards goals
