@@ -13,11 +13,7 @@ void main() async {
   runApp(MyApp());
 }
 
-//String docID = 'dh2U5PjPbWGjKMkPaMqw';
-
-// //Map<String, dynamic> data = .data()! as Map<String, dynamic>;
-// final data = firestore.collection('percents').doc('percentageCalcs').get();
-
+// Don't know why I made this function.
 extractData() async {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final data =

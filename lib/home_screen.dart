@@ -20,17 +20,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var mindPercent;
-  var bodyPercent;
-  var spiritPercent;
+  var mindPercent = 0.0;
+  var bodyPercent = 0.0;
+  var spiritPercent = 0.0;
 
   @override
   void initState() {
-    /**Gotta figure out a way to use async functions here and convert Future<double> to a regular double */
-    mindPercent = Globals().getMindPercent();
-    bodyPercent = Globals().getBodyPercent();
-    spiritPercent = Globals().getSpiritPercent();
+    setGlobals();
     super.initState();
+  }
+
+  void setGlobals() async {
+    mindPercent = await Globals().getMindPercent();
+    bodyPercent = await Globals().getBodyPercent();
+    spiritPercent = await Globals().getSpiritPercent();
   }
 
   @override
@@ -59,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             MindCard(),
             BodyCard(),
             SpiritCard(),
-            //ReportProgress(),
+            ReportProgress(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
