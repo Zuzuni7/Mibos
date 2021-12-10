@@ -33,11 +33,15 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  // Set Globals through Globals custom class
   void setGlobals() async {
     mindPercent = await Globals().getMindPercent();
     bodyPercent = await Globals().getBodyPercent();
     spiritPercent = await Globals().getSpiritPercent();
     percent = await Globals().getPercent();
+    print(mindPercent);
+    print(bodyPercent);
+    print(spiritPercent);
   }
 
   @override
@@ -80,10 +84,17 @@ class _HomePageState extends State<HomePage> {
                                   builder: (context) => UpdateGoals()))
                           .then((value) => initState());
                     },
-                    child: Text('Update Goals Screen'))
+                    child: Text('Update Goals Screen')),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       setState(() {
+                //         initState();
+                //       });
+                //     },
+                //     child: Text('Refresh'))
               ],
             ),
-          ], // This child widget is breaking the everything and idky
+          ],
           padding: EdgeInsets.all(20),
         ),
         backgroundColor: Colors.white,
@@ -96,25 +107,25 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                if (mindPercent > 0.75)
-                  if (bodyPercent > 0.75)
-                    if (spiritPercent > 0.75)
+                if (this.mindPercent > 0.75)
+                  if (this.bodyPercent > 0.75)
+                    if (this.spiritPercent > 0.75)
                       Avatar('assets/images/avatar111.gif')
                     else
                       Avatar('assets/images/avatar110.gif')
-                  else if (spiritPercent > 0.75)
+                  else if (this.spiritPercent > 0.75)
                     Avatar('assets/images/avatar101.gif')
                   else
                     Avatar('assets/images/avatar100.gif')
-                else if (bodyPercent > 0.75)
-                  if (spiritPercent > 0.75)
+                else if (this.bodyPercent > 0.75)
+                  if (this.spiritPercent > 0.75)
                     Avatar('assets/images/avatar011.gif')
                   else
                     Avatar('assets/images/avatar010.gif')
-                else if (spiritPercent > 0.75)
+                else if (this.spiritPercent > 0.75)
                   Avatar('assets/images/avatar001.gif')
                 else
-                  Avatar('assets/images/avatar101.gif')
+                  Avatar('assets/images/avatar000.gif')
               ],
             )));
   }

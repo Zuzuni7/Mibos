@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'main.dart';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 final fb = FirebaseFirestore.instance
@@ -208,19 +207,6 @@ class _GoalsScreen extends State<GoalsScreen> {
           child: Text('Submit Changes', style: TextStyle(fontSize: 30)),
         ),
       ),
-    );
-  }
-}
-
-// This class is supposed to be for formatting the form entry but I might delete it later...
-class EditGoalsHeader extends StatelessWidget {
-  const EditGoalsHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text(""),
-      padding: EdgeInsets.all(30),
     );
   }
 }

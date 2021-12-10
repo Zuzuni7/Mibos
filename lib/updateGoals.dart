@@ -74,6 +74,9 @@ class _UpdateGoalsState extends State<UpdateGoals> {
 
     // Calculations for total percentage and progress bar
     mindPercent = currMmAmt / mAmt;
+    print('Mindpercent: $mindPercent');
+    print('CurrAmt: $currMmAmt');
+    print('mAmount: $mAmt');
     bodyPercent = currBmAmt / bAmt;
     spiritPercent = currSmAmt / sAmt;
 

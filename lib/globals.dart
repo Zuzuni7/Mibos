@@ -95,7 +95,9 @@ class Globals {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final data =
         await firestore.collection('percents').doc('percentageCalcs').get();
+
     percent = double.parse(data['percent'].toString());
+    print('Globals Percent: $percent');
     return percent;
   }
 

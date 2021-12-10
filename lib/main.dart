@@ -12,9 +12,9 @@ void main() async {
   runApp(MyApp());
 }
 
-// Don't know why I made this function.
+// Originally made this function to initialize all the data from globals
+
 // extractData() async {
-//   FirebaseFirestore firestore = FirebaseFirestore.instance;
 //   final data =
 //       await firestore.collection('percents').doc('percentageCalcs').get();
 
