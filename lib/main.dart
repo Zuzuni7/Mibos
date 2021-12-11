@@ -8,28 +8,35 @@ import 'globals.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  //await extractData();
+  await extractData();
   runApp(MyApp());
 }
 
 // Originally made this function to initialize all the data from globals
 
-// extractData() async {
-//   final data =
-//       await firestore.collection('percents').doc('percentageCalcs').get();
+extractData() async {
+  final data =
+      await firestore.collection('percents').doc('percentageCalcs').get();
 
-//   var percent = Globals().getPercent();
-//   var currMmAmt = Globals().getCurrMmAmt();
-//   var currBmAmt = Globals().getCurrBmAmt();
-//   var currSmAmt = Globals().getCurrSmAmt();
+  var percent = Globals().getPercent();
+  var currMmAmt = Globals().getCurrMmAmt();
+  var currBmAmt = Globals().getCurrBmAmt();
+  var currSmAmt = Globals().getCurrSmAmt();
 
-//   var mindPercent = Globals().getMindPercent();
-//   var bodyPercent = Globals().getBodyPercent();
-//   var spiritPercent = Globals().getSpiritPercent();
-//   print(currBmAmt);
-//   print(currMmAmt);
-//   print(currSmAmt);
-// }
+  var mindPercent = Globals().getMindPercent();
+  var bodyPercent = Globals().getBodyPercent();
+  var spiritPercent = Globals().getSpiritPercent();
+
+  print('Current Amounts: Mind-$currMmAmt');
+  print('Current Amounts: Body-$currBmAmt');
+  print('Current Amounts: Spirit-$currSmAmt');
+
+  print('Total Mind: $mindPercent');
+  print('Total Body: $bodyPercent');
+  print('Total Spirit: $spiritPercent');
+
+  print('Total Percent: $percent');
+}
 
 class MyApp extends StatelessWidget {
   @override

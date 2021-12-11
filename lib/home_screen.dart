@@ -107,22 +107,22 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                if (this.mindPercent > 0.75)
-                  if (this.bodyPercent > 0.75)
-                    if (this.spiritPercent > 0.75)
+                if (mindPercent > 0.75)
+                  if (bodyPercent > 0.75)
+                    if (spiritPercent > 0.75)
                       Avatar('assets/images/avatar111.gif')
                     else
                       Avatar('assets/images/avatar110.gif')
-                  else if (this.spiritPercent > 0.75)
+                  else if (spiritPercent > 0.75)
                     Avatar('assets/images/avatar101.gif')
                   else
                     Avatar('assets/images/avatar100.gif')
-                else if (this.bodyPercent > 0.75)
-                  if (this.spiritPercent > 0.75)
+                else if (bodyPercent > 0.75)
+                  if (spiritPercent > 0.75)
                     Avatar('assets/images/avatar011.gif')
                   else
                     Avatar('assets/images/avatar010.gif')
-                else if (this.spiritPercent > 0.75)
+                else if (spiritPercent > 0.75)
                   Avatar('assets/images/avatar001.gif')
                 else
                   Avatar('assets/images/avatar000.gif')

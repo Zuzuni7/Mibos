@@ -23,6 +23,7 @@ class _ReportProgressState extends State<ReportProgress>
             setState(() {});
           });
     controller.repeat(reverse: true);
+    setState(() {});
     super.initState();
   }
 

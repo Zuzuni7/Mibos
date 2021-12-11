@@ -33,6 +33,7 @@ class _CardState extends State<MindCard> {
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;
+                
             return ListTile(
               title: Text(data['mind'][1]),
               subtitle: Text(data['mind'][0]),

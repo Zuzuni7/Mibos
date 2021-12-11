@@ -46,28 +46,28 @@ class _UpdateGoalsState extends State<UpdateGoals> {
     var percent = await Globals().getPercent();
 
     // These are the current amounts that will be updated by the user
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'currMmAmt': double.parse(Mcontroller.text)});
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'currBmAmt': double.parse(Bcontroller.text)});
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'currSmAmt': double.parse(Scontroller.text)});
 
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'mindPercent': mindPercent});
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'bodyPercent': bodyPercent});
-    firestore
+    await firestore
         .collection('percents')
         .doc('percentageCalcs')
         .update({'spiritPercent': spiritPercent});
@@ -141,10 +141,11 @@ class _UpdateGoalsState extends State<UpdateGoals> {
               updateData();
 
               Route route = MaterialPageRoute(builder: (context) => HomePage());
-              Navigator.pop(context);
               Navigator.push(context, route);
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.pop(context);
+
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             },
             child: Text('Submit Changes', style: TextStyle(fontSize: 30)),
           ),
